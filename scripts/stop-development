@@ -1,0 +1,16 @@
+#!/bin/bash
+
+RED=$(tput setaf 1)
+CYAN=$(tput setaf 6)
+YELLOW=$(tput setaf 11)
+GREEN=$(tput setaf 2)
+DEFAULT=$(tput setaf 7)
+
+echo -e "${CYAN}Stop the current active containers.${DEFAULT}"
+echo -e "${GREEN}Stopped all containers${DEFAULT}"
+
+echo "${GREEN}Stop all active docker containers${DEFAULT}"
+docker stop $(docker ps -a -q) > /dev/null 2>&1
+
+echo "${GREEN}Destroy current development environment${DEFAULT}"
+docker-compose down --volumes > /dev/null 2>&1

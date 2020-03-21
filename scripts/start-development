@@ -1,0 +1,14 @@
+#!/bin/bash
+
+RED=$(tput setaf 1)
+CYAN=$(tput setaf 6)
+YELLOW=$(tput setaf 11)
+GREEN=$(tput setaf 2)
+DEFAULT=$(tput setaf 7)
+
+echo "${GREEN}Start the current development environment${DEFAULT}"
+docker-compose up -d --build
+sleep 10s # Give docker some time to sync the development folder, before installing the dependencies.
+
+echo "${GREEN}Install the dependencies${DEFAULT}"
+docker-compose run $1
