@@ -1,0 +1,13 @@
+/.git*
+/.idea*
+_ide_helper.php
+vendor/
+bootstrap/cache
+storage/laravel-ci-training-mysql-data/
+!bootstrap/cache/.gitignore
+.dockerignore
+.editorconfig
+Dockerfile
+docker-compose.yml
+Makefile
+.DS_Store

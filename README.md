@@ -5,8 +5,12 @@
 
 This sample Laravel application developed to give you an idea how you can improve your coding. This application will try cover following points:
 
- - [] [Dockers setup]
+ - [x] [Dockers setup]
  - [] [Use of Makefile]
  - [] [PHP CodeSniffer]
  - [] [Unit Testing]
  - [] [Acceptance Tests]
+
+## Docker Setup
+ - Make sure you all have [docker](https://www.docker.com/products/docker-desktop) install on your machine
+ - More [help](https://github.com/dimadeush/docker-apache-php-laravel)
