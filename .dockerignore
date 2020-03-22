@@ -1,6 +1,7 @@
 /.git*
 /.idea*
 _ide_helper.php
+.phpstorm.meta.php
 vendor/
 bootstrap/cache
 storage/laravel-ci-training-mysql-data/
