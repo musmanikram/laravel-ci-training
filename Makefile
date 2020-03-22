@@ -28,6 +28,34 @@ help:
 	@echo 'To run a task: make [task_name]'
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "%s%-30s%s %s\n", "${CYAN}", $$1, "${DEFAULT}",$$2}'
 
+.PHONY: clear-all
+clear-all: ## Clear laravel config and cache together
+	@echo "${CYAN} Clearing all ${DEFAULT}"
+	@make clear-cache && make clear-config
+
+.PHONY: clear-cache
+clear-cache: ## Clear laravel cache i.e php artisan cache:clear
+	@echo "${CYAN} Clearing cache ${DEFAULT}"
+	@make exec cmd="php artisan cache:clear"
+
+.PHONY: clear-config
+clear-config: ## Clear laravel config i.e php artisan config:clear
+	@echo "${CYAN} Clearing cache ${DEFAULT}"
+	@make exec cmd="php artisan config:clear"
+
+.PHONY: exec
+exec: ## Exucute some command defined in cmd="..." variable inside PHP-Apache container shell
+	@echo "${DEFAULT} Executing: ${CYAN} ${START_COMMAND} $(php-project) bash -c \"${cmd}\" ${DEFAULT}"
+	${START_COMMAND} $(php-project) bash -c "${cmd}"
+
+.PHONY: phpcs
+phpcs: ## Run CodeSniffer to show php errors
+	@make exec cmd="./vendor/bin/phpcs --version && ./vendor/bin/phpcs --standard=phpcs.xml"
+
+.PHONY: phpcs-fix
+phpcs-fix: ## Run CodeSniffer fixer to fix php errors
+	@make exec cmd="./vendor/bin/phpcbf --version && ./vendor/bin/phpcbf --standard=phpcs.xml"
+
 .PHONY: start
 start: ## Start the development environment
 	@echo "Starting development environment"
@@ -48,23 +76,3 @@ ssh: ## Login into PHP-Apache container shell
 ssh-mysql: ## Login into MySQL container shell
 	@echo "${GREEN}Logging you in MySQL container shell${DEFAULT}"
 	${START_COMMAND} $(mysql-project) bash
-
-.PHONY: exec
-exec: ## Exucute some command defined in cmd="..." variable inside PHP-Apache container shell
-	@echo "${DEFAULT} Executing: ${CYAN} ${START_COMMAND} $(php-project) bash -c \"${cmd}\" ${DEFAULT}"
-	${START_COMMAND} $(php-project) bash -c "${cmd}"
-
-.PHONY: clear-cache
-clear-cache: ## Clear laravel cache i.e php artisan cache:clear
-	@echo "${CYAN} Clearing cache ${DEFAULT}"
-	@make exec cmd="php artisan cache:clear"
-
-.PHONY: clear-config
-clear-config: ## Clear laravel config i.e php artisan config:clear
-	@echo "${CYAN} Clearing cache ${DEFAULT}"
-	@make exec cmd="php artisan config:clear"
-
-.PHONY: clear-all
-clear-all: ## Clear laravel config and cache together
-	@echo "${CYAN} Clearing all ${DEFAULT}"
-	@make clear-cache && make clear-config
