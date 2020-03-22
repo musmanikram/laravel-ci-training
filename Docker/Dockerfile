@@ -9,6 +9,7 @@ ENV APP_HOME /var/www/html
 
 # install all the dependencies and enable PHP modules
 RUN apt-get update && apt-get upgrade -y && apt-get install -y \
+      nodejs \
       procps \
       nano \
       git \
