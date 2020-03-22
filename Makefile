@@ -30,9 +30,9 @@ help:
 
 .PHONY: start
 start: ## Start the development environment
-	@echo 'Starting development environment'
+	@echo "Starting development environment"
 	@make stop
-	@scripts/start-development $(project)
+	@scripts/start-development
 
 .PHONY: stop
 stop: ## Stop the development environment

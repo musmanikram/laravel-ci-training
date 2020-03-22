@@ -9,6 +9,3 @@ DEFAULT=$(tput setaf 7)
 echo "${GREEN}Start the current development environment${DEFAULT}"
 docker-compose up -d --build
 sleep 10s # Give docker some time to sync the development folder, before installing the dependencies.
-
-echo "${GREEN}Install the dependencies${DEFAULT}"
-docker-compose run $1

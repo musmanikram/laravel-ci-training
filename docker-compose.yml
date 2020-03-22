@@ -8,26 +8,27 @@ services:
     container_name: laravel-ci-training-app
     volumes:
       - .:/var/www/html
+    networks:
+      - overlay
     ports:
       - 8000:80
       - 443:443 # for SSL
     expose:
       - 80
       - 443 # for SSL
-    depends_on:
-      - laravel-ci-training-mysql
-    links:
-      - laravel-ci-training-mysql
 
   laravel-ci-training-mysql:
     image: mysql:8.0.19
     container_name: laravel-ci-training-mysql
     volumes:
       - ./storage/laravel-ci-training-mysql-data:/var/lib/mysql
+    networks:
+      - overlay
     environment:
       - MYSQL_ROOT_PASSWORD=securerootpassword
       - MYSQL_DATABASE=laravel-ci-training
-#      - MYSQL_USER=root
-#      - MYSQL_PASSWORD=secret
     ports:
       - 3306:3306
+
+networks:
+  overlay:
