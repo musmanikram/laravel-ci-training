@@ -17,6 +17,7 @@
     },
     "require-dev": {
         "barryvdh/laravel-ide-helper": "^2.6",
+        "brainmaestro/composer-git-hooks": "^2.8",
         "facade/ignition": "^2.0",
         "fzaninotto/faker": "^1.9.1",
         "mockery/mockery": "^1.3.1",
@@ -32,6 +33,16 @@
     "extra": {
         "laravel": {
             "dont-discover": []
+        },
+        "hooks": {
+            "pre-commit": [
+                "echo Committing changes\n",
+                "make phpcs"
+            ],
+            "pre-push": [
+                "echo Pushing changes\n"
+            ],
+            "post-merge": "composer install"
         }
     },
     "autoload": {
@@ -64,7 +75,9 @@
         "post-update-cmd": [
             "Illuminate\\Foundation\\ComposerScripts::postUpdate",
             "@php artisan ide-helper:generate",
-            "@php artisan ide-helper:meta"
-        ]
+            "@php artisan ide-helper:meta",
+            "cghooks update"
+        ],
+        "post-install-cmd": "cghooks add --ignore-lock"
     }
 }

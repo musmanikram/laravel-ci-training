@@ -12,6 +12,7 @@
 
     <!-- exclude our migrations directory from the violation check-->
     <exclude-pattern>*/migrations/*</exclude-pattern>
+    <exclude-pattern>*/seeds/*</exclude-pattern>
 
     <!-- ignore warnings and display ERRORS only -->
     <arg  value="np"/>
