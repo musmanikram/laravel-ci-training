@@ -7,5 +7,5 @@ GREEN=$(tput setaf 2)
 DEFAULT=$(tput setaf 7)
 
 echo "${GREEN}Start the current development environment${DEFAULT}"
-docker-compose up -d --build
+docker-compose up -d
 sleep 10s # Give docker some time to sync the development folder, before installing the dependencies.
