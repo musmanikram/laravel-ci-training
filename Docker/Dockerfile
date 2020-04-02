@@ -9,7 +9,8 @@ ENV APP_HOME /var/www/html
 
 # install all the dependencies and enable PHP modules
 RUN apt-get update && apt-get upgrade -y && apt-get install -y \
-      nodejs \
+      curl \
+      gnupg \
       procps \
       nano \
       git \
@@ -31,6 +32,14 @@ RUN apt-get update && apt-get upgrade -y && apt-get install -y \
       rm -rf /var/list/apt/* && \
       rm -r /var/lib/apt/lists/* && \
       apt-get clean
+
+# install node
+RUN curl -sL https://deb.nodesource.com/setup_12.x | bash -
+RUN apt-get -y install nodejs
+
+# confirm that node is successful
+RUN node -v
+RUN npm -v
 
 # disable default site
 RUN a2dissite 000-default.conf
@@ -66,6 +75,9 @@ WORKDIR $APP_HOME
 
 # create composer folder for user www-data
 RUN mkdir -p /var/www/.composer && chown -R www-data:www-data /var/www/.composer
+# create node folder for user www-data
+RUN mkdir -p /var/www/.npm && chown -R www-data:www-data /var/www/.npm
+RUN mkdir -p /var/www/.config && chown -R www-data:www-data /var/www/.config
 
 USER www-data
 
@@ -73,8 +85,8 @@ USER www-data
 COPY --chown=www-data:www-data . $APP_HOME/
 
 # install all PHP dependencies
-RUN if [ "$BUILD_ARGUMENT_ENV" = "dev" ] || [ "$BUILD_ARGUMENT_ENV" = "test" ]; then composer install --no-interaction --no-progress; \
-    else composer install --no-interaction --no-progress --no-dev; \
+RUN if [ "$BUILD_ARGUMENT_ENV" = "dev" ] || [ "$BUILD_ARGUMENT_ENV" = "test" ]; then composer install --no-interaction --no-progress; npm install; \
+    else composer install --no-interaction --no-progress --no-dev; npm install; \
     fi
 
 USER root
