@@ -78,7 +78,6 @@
             "@php artisan ide-helper:generate",
             "@php artisan ide-helper:meta",
             "cghooks update"
-        ],
-        "post-install-cmd": "cghooks add --ignore-lock"
+        ]
     }
 }

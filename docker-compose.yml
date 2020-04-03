@@ -22,11 +22,14 @@ services:
     container_name: laravel-ci-training-mysql
     volumes:
       - ./storage/laravel-ci-training-mysql-data:/var/lib/mysql
+      - ./scripts/database/init-db.sql:/docker-entrypoint-initdb.d/init-db.sql
     networks:
       - overlay
     environment:
-      - MYSQL_ROOT_PASSWORD=securerootpassword
       - MYSQL_DATABASE=laravel-ci-training
+      - MYSQL_HOST=laravel-ci-training-mysql
+      - MYSQL_USERNAME=root
+      - MYSQL_ROOT_PASSWORD=securerootpassword
     ports:
       - 3306:3306
 
