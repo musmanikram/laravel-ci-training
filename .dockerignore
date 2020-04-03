@@ -11,5 +11,4 @@ storage/laravel-ci-training-mysql-data/
 Dockerfile
 docker-compose.yml
 Makefile
-scripts/
 .DS_Store
