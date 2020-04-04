@@ -1,11 +1,12 @@
 <div class="border border-blue-400 rounded-lg px-8 py-6 mb-8">
-    <form method="POST" action="/tweets">
+    <form method="POST" action="{{ url('tweets') }}">
         @csrf
 
         <textarea
             name="body"
             class="w-full"
             placeholder="What's up doc?"
+            required
         ></textarea>
 
         <hr class="my-4">
