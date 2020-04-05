@@ -3,6 +3,7 @@
 /public/storage
 /storage/*.key
 /storage/laravel-ci-training-mysql-data/
+/storage/laravel-ci-training-mysql-data-testing/
 /vendor
 .env
 .env.backup
