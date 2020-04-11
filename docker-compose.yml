@@ -33,21 +33,5 @@ services:
     ports:
       - 3306:3306
 
-  laravel-ci-training-mysql-testing:
-    image: mysql:8.0.19
-    container_name: laravel-ci-training-mysql-testing
-    volumes:
-      - ./storage/laravel-ci-training-mysql-data-testing:/var/lib/mysql
-      - ./scripts/database/init-testing-db.sql:/docker-entrypoint-initdb.d/init-testing-db.sql
-    networks:
-      - overlay
-    environment:
-      - MYSQL_DATABASE=laravel-ci-training-testing
-      - MYSQL_HOST=laravel-ci-training-mysql-testing
-      - MYSQL_USERNAME=root
-      - MYSQL_ROOT_PASSWORD=securerootpassword
-    ports:
-      - 3308:3308
-
 networks:
   overlay:
