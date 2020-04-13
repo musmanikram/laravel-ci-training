@@ -4,6 +4,6 @@ if (!function_exists('testAttribute')) {
 
     function testAttribute(string $value): string
     {
-        return App::environment(['dev']) ? ' data-cy=' . $value : '';
+        return App::environment(['testing']) ? ' data-cy=' . $value : '';
     }
 }
