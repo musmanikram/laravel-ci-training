@@ -7,6 +7,7 @@
             class="w-full"
             placeholder="What's up doc?"
             required
+            {{ testAttribute('tweet-input') }}
         ></textarea>
 
         <hr class="my-4">

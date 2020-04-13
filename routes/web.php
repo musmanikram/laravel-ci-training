@@ -13,6 +13,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+if (App::environment() === 'testing') {
+    Route::get('__testing__/create/{model}', function ($model) {
+        return factory("App\\{$model}")->create(request()->all());
+    });
+
+    Route::get('__testing__/login', function () {
+        $user = factory("App\User")->create(request()->all());
+        auth()->login($user);
+    });
+}
+
 Route::get('/', function () {
     return view('welcome');
 });

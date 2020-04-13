@@ -41,6 +41,11 @@ $app->singleton(
     App\Exceptions\Handler::class
 );
 
+// This will load testing config to prevent change in our original database
+if (isset($_SERVER['HTTP_HOST']) && $_SERVER['HTTP_HOST'] === 'laravel-ci-training.local:8000') {
+    \Dotenv\Dotenv::createMutable(base_path(), '.env.testing')->load();
+}
+
 /*
 |--------------------------------------------------------------------------
 | Return The Application

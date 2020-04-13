@@ -3,7 +3,6 @@
 /public/storage
 /storage/*.key
 /storage/laravel-ci-training-mysql-data/
-/storage/laravel-ci-training-mysql-data-testing/
 /vendor
 .env
 .env.backup
@@ -18,4 +17,6 @@ _ide_helper.php
 .vscode
 .DS_Store
 cghooks.lock
+/cypress/screenshots/
+/cypress/videos/
 
