@@ -28,7 +28,7 @@ const routePrefix = '__testing__';
 const environment = 'testing';
 
 Cypress.Commands.add('clearDatabase', () => {
-    cy.exec(`make exec cmd="php artisan migrate:refresh --env=${environment}"`);
+    cy.exec(`php artisan migrate:refresh --env=${environment}`);
 })
 
 
