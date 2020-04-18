@@ -37,8 +37,7 @@
         },
         "hooks": {
             "pre-commit": [
-                "echo Committing changes\n",
-                "make phpcs"
+                "echo Committing changes\n"
             ],
             "pre-push": [
                 "echo Pushing changes\n"
