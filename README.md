@@ -27,7 +27,7 @@ This sample Laravel application developed to give you an idea how you can improv
  2. Add domain to local `hosts` file:
 
     ```bash
-    127.0.0.1  laravel-ci-training.local
+    127.0.0.1  laravel-ci-training-testing.local
     ```
  3. Build and start the application from your terminal:
     ```bash
@@ -36,10 +36,10 @@ This sample Laravel application developed to give you an idea how you can improv
     ```
     
     Note: It will take some time, so bear with me 
- 4. Make sure these below url works in your browser:
+ 4. Make sure below url works in your browser:
     
     ```bash
-    laravel-ci-training.local # used to load test environment for phpunit and cypress
+    laravel-ci-training-testing.local:8000 # used to load test environment for phpunit and cypress
     ```
 
 ## Packages

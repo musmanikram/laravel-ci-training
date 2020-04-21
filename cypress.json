@@ -1,3 +1,3 @@
 {
-    "baseUrl": "http://laravel-ci-training.local:8000/"
+    "baseUrl": "http://laravel-ci-training-testing.local:8000/"
 }
