@@ -27,8 +27,7 @@ context('Login', () => {
                 cy.visit('login');
                 cy.get('[data-cy=login-email]').type(user.email);
                 cy.get('[data-cy=login-password]').type('password');
-                cy.get('[data-cy=login-submit-button]')
-                    .click();
+                cy.get('[data-cy=login-submit-button]').click()
                 cy.url().should('include', '/home');
             });
     });
