@@ -23,24 +23,45 @@ This sample Laravel application developed to give you an idea how you can improv
  - [Cypress 4.3](https://www.cypress.io/) (Testing framework for acceptance tests)
  
 ## Installation
- 1. Clone this repository from GitHub
+ 1. Clone this repository from GitHub and go to cloned directory
  2. Add domain to local `hosts` file:
-
     ```bash
-    127.0.0.1  laravel-ci-training.local
+    127.0.0.1  laravel-ci-training-testing.local
     ```
+    
  3. Build and start the application from your terminal:
     ```bash
     composer install
     npm install
     ```
+    ###### Note: It will take some time, so bear with me
+ 
+ 4. Create databases bt running following command:
+     ```bash
+     make:databases
+     ```
+    ###### This will create two databases `laravel-ci-training` and `laravel-ci-training-testing` if they doesn't exist.
+    ###### Before running any cypress or phpunit test, we normally clean whole database.
+    ###### That's why we are creating `laravel-ci-training-testing` database so we don't lose all your data from actual database i.e `laravel-ci-training` while development
+    ###### _You can find this command above command in `app/Console/Commands/DatabaseCreateCommand.php`_
     
-    Note: It will take some time, so bear with me 
- 4. Make sure these below url works in your browser:
-    
+ 5. Run built in server
     ```bash
-    laravel-ci-training.local # used to load test environment for phpunit and cypress
+    php artisan serve
+    ```  
+ 
+ 6. Make sure below url works in your browser:
+    ```bash
+    laravel-ci-training-testing.local:8000
     ```
+    ##### used to load test environment for phpunit and cypress
+
+## Cypress
+**NOTE: To run cypress make sure you follow all steps of installation**
+Cypress can be opened by running nay of following commands under root directory of project:
+
+  1.  `/node_modules/.bin/cypress open`
+  2.  `php artisan run:cypress` (created this to give an idea of laravel commands)
 
 ## Packages
 #### Composer Packages

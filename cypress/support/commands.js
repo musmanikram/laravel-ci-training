@@ -24,18 +24,17 @@
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite("visit", (originalFn, url, options) => { ... })
 
-const routePrefix = '__testing__';
-const environment = 'testing';
+const routePrefix = '__testing__'
+const environment = 'testing'
 
 Cypress.Commands.add('clearDatabase', () => {
-    cy.exec(`make exec cmd="php artisan migrate:refresh --env=${environment}"`);
+    cy.exec(`php artisan migrate:refresh --env=${environment}`)
 })
-
 
 Cypress.Commands.add('create', (model, overrides = {}) => {
     return cy.request(`${routePrefix}/create/${model}`, overrides).its('body')
 })
 
 Cypress.Commands.add('login', (attributes = {}) => {
-    return cy.request(`${routePrefix}/login`, attributes);
-});
+    return cy.request(`${routePrefix}/login`, attributes)
+})
