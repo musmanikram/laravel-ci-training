@@ -38,3 +38,7 @@ Cypress.Commands.add('create', (model, overrides = {}) => {
 Cypress.Commands.add('login', (attributes = {}) => {
     return cy.request(`${routePrefix}/login`, attributes)
 })
+
+Cypress.Commands.add('getTestAttribute', (name, options = {}) => {
+    return cy.get(`[data-cy=${name}]`, options);
+})
