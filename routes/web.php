@@ -21,6 +21,7 @@ if (App::environment() === 'testing') {
     Route::get('__testing__/login', function () {
         $user = factory("App\User")->create(request()->all());
         auth()->login($user);
+        return $user;
     });
 }
 

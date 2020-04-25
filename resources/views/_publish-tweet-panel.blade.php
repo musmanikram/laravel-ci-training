@@ -22,6 +22,7 @@
             <button
                 type="submit"
                 class="bg-blue-500 rounded-lg shadow py-2 px-2 text-white"
+                {{ testAttribute('tweet-submit-button') }}
             >
                 Tweet-a-roo!
             </button>
@@ -29,6 +30,6 @@
     </form>
 
     @error('body')
-    <p class="text-red-500 text-sm mt-2">{{ $message }}</p>
+        <p class="text-red-500 text-sm mt-2" {{ testAttribute('tweet-error') }}>{{ $message }}</p>
     @enderror
 </div>

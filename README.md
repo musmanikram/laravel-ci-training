@@ -40,10 +40,13 @@ This sample Laravel application developed to give you an idea how you can improv
      ```bash
      make:databases
      ```
-    ###### This will create two databases `laravel-ci-training` and `laravel-ci-training-testing` if they doesn't exist.
-    ###### Before running any cypress or phpunit test, we normally clean whole database.
-    ###### That's why we are creating `laravel-ci-training-testing` database so we don't lose all your data from actual database i.e `laravel-ci-training` while development
-    ###### _You can find this command above command in `app/Console/Commands/DatabaseCreateCommand.php`_
+    _This will create two databases `laravel-ci-training` and `laravel-ci-training-testing` if they doesn't exist._
+    
+    _Before running any cypress or phpunit test, we normally clean whole database._
+    
+    _That's why we are creating `laravel-ci-training-testing` database so we don't lose all your data from actual database i.e `laravel-ci-training` while development_
+    
+    _You can find this command above command in `app/Console/Commands/DatabaseCreateCommand.php`_
     
  5. Run built in server
     ```bash
@@ -58,9 +61,10 @@ This sample Laravel application developed to give you an idea how you can improv
 
 ## Cypress
 **NOTE: To run cypress make sure you follow all steps of installation**
+
 Cypress can be opened by running nay of following commands under root directory of project:
 
-  1.  `/node_modules/.bin/cypress open`
+  1.  `./node_modules/.bin/cypress open`
   2.  `php artisan run:cypress` (created this to give an idea of laravel commands)
 
 ## Packages
