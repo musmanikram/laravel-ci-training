@@ -1,4 +1,4 @@
-<div class="flex p-4 border-b border-b-gray-400" {{ testAttribute('tweet-id-'.$tweet->id) }}>
+<div class="flex p-4 {{ $loop->last ? '' : 'border-b border-b-gray-400' }}" {{ testAttribute('tweet-id-'.$tweet->id) }}>
     <div class="mr-2 flex-shrink-0">
         <a href="{{ $tweet->user->profilePath() }}">
             <img
