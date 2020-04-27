@@ -4,7 +4,7 @@ context('Tweet', () => {
         cy.clearDatabase()
         cy.login().then((user) => {
             loggedInUser = user
-            cy.visit('home')
+            cy.visit('tweets')
         })
     })
 
