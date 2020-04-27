@@ -54,9 +54,4 @@ class User extends Authenticatable
     {
         return $this->hasMany(Tweet::class);
     }
-
-    public function getRouteKeyName()
-    {
-        return 'name';
-    }
 }
