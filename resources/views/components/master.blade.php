@@ -20,19 +20,17 @@
     <link href="{{ asset('css/main.css') }}" rel="stylesheet">
 </head>
 <body>
-    <div id="app">
-        <section class="px-8 py-4">
-            <header class="container mx-auto">
-                <h1>
-                    <img src="{{ asset('images/logo.svg') }}">
-                </h1>
-            </header>
-        </section>
-        <section class="px-8">
-            <main class="container mx-auto">
-                @yield('content')
-            </main>
-        </section>
-    </div>
+<div id="app">
+    <section class="px-8 py-4">
+        <header class="container mx-auto">
+            <h1>
+                <img src="{{ asset('images/logo.svg') }}">
+            </h1>
+        </header>
+    </section>
+
+    {{ $slot }}
+
+</div>
 </body>
 </html>
