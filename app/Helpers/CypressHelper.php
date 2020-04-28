@@ -7,3 +7,11 @@ if (!function_exists('testAttribute')) {
         return App::environment(['testing']) ? ' data-cy=' . $value : '';
     }
 }
+
+if (!function_exists('currentUser')) {
+
+    function currentUser()
+    {
+        return auth()->user();
+    }
+}

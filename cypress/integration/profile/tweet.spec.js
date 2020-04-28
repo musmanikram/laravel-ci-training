@@ -50,4 +50,16 @@ context('Tweet', () => {
         //TODO: check html validation
     })
 
+    it('Friend and your tweet must be visible ', () => {
+        //TODO: Friend and your tweet must be visible
+        /*
+        * Steps:
+        * 1. Post one tweet for yourself
+        * 2. Follow another user e.g John
+        * 3. Login to John
+        * 4. Post a a tweet for John
+        * 5. John should be be able to see your tweet and his own tweet on his profile
+        * */
+    })
+
 })
