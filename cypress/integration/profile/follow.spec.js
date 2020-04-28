@@ -32,4 +32,11 @@ context('Tweet', () => {
             })
         })
     })
+
+    it('Follow button will be invisible on logged in user profile', () => {
+        cy.login().then((user) => {
+            cy.visit(`profiles/${user.name}`);
+            cy.getTestAttribute(`follow-button-${user.id}`).should('not.exist')
+        })
+    })
 })
