@@ -33,7 +33,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/tweets', 'TweetsController@index')->name('home');
     Route::post('/tweets', 'TweetsController@store')->name('tweets');
     Route::post('/profiles/{user:username}/follow', 'FollowsController@store');
-    Route::get('/profiles/{user:username}/edit', 'ProfileController@edit')->middleware('can:edit.user');
+    Route::get('/profiles/{user:username}/edit', 'ProfileController@edit')->middleware('can:edit,user');
 });
 
 Route::get('/profiles/{user:username}', 'ProfileController@show')->name('profile');
