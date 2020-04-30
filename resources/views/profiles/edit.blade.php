@@ -15,6 +15,7 @@
                    name="name"
                    id="name"
                    value="{{ $user->name }}"
+                   {{ testAttribute('profile-name') }}
                    required
             >
 
@@ -35,6 +36,7 @@
                    name="username"
                    id="username"
                    value="{{ $user->username }}"
+                   {{ testAttribute('profile-username') }}
                    required
             >
 
@@ -55,6 +57,7 @@
                        type="file"
                        name="avatar"
                        id="avatar"
+                       {{ testAttribute('profile-avatar') }}
                        required
                 >
 
@@ -77,6 +80,7 @@
                    name="email"
                    id="email"
                    value="{{ $user->email }}"
+                   {{ testAttribute('profile-email') }}
                    required
             >
 
@@ -96,6 +100,7 @@
                    type="password"
                    name="password"
                    id="password"
+                   {{ testAttribute('profile-password') }}
                    required
             >
 
@@ -115,17 +120,19 @@
                    type="password"
                    name="password_confirmation"
                    id="password_confirmation"
+                   {{ testAttribute('profile-password-confirmation') }}
                    required
             >
 
             @error('password_confirmation')
-            <p class="text-red-500 text-xs mt-2">{{ $message }}</p>
+                <p class="text-red-500 text-xs mt-2">{{ $message }}</p>
             @enderror
         </div>
 
         <div class="mb-6">
             <button type="submit"
                     class="bg-blue-400 text-white rounded py-2 px-4 hover:bg-blue-500"
+                    {{ testAttribute('profile-save-button') }}
             >
                 Submit
             </button>
