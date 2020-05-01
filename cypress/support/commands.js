@@ -40,5 +40,27 @@ Cypress.Commands.add('login', (attributes = {}) => {
 })
 
 Cypress.Commands.add('getTestAttribute', (name, options = {}) => {
-    return cy.get(`[data-cy=${name}]`, options);
+    return cy.get(`[data-cy=${name}]`, options)
 })
+
+Cypress.Commands.add(
+    'uploadFile',
+    { prevSubject: 'element' },
+    (subject, fileName) => {
+        console.log('subject', subject)
+        return cy
+            .fixture(fileName, 'base64')
+            .then(Cypress.Blob.base64StringToBlob)
+            .then((blob) => {
+                console.log('blob', blob)
+                const el = subject[0]
+                if (el != null) {
+                    const testFile = new File([blob], fileName)
+                    const dataTransfer = new DataTransfer()
+                    dataTransfer.items.add(testFile)
+                    el.files = dataTransfer.files
+                }
+                return subject
+            })
+    }
+)
