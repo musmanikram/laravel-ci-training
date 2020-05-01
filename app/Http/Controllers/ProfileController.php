@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use Illuminate\Support\Facades\File;
 use Illuminate\Validation\Rule;
 
 class ProfileController extends Controller
@@ -30,6 +31,9 @@ class ProfileController extends Controller
 
         if (request('avatar')) {
             $attributes['avatar'] = request('avatar')->store('avatars');
+            //TODO: Fix image deletion
+            // Delete old image currently not working
+            File::delete(public_path($oldAvatarPath));
         }
 
         $user->update($attributes);

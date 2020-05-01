@@ -5,7 +5,8 @@ namespace Tests\Feature;
 use App\Tweet;
 use App\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Facades\Storage;
 use Tests\TestCase;
 
 class UserTest extends TestCase
@@ -94,5 +95,83 @@ class UserTest extends TestCase
         $this->assertEquals($friendTweet->id, $this->user->timeline()[1]->id);
         $this->assertEquals($ownTweet->body, $this->user->timeline()[0]->body);
         $this->assertEquals($friendTweet->body, $this->user->timeline()[1]->body);
+    }
+
+    public function testUserCanUpdateProfileSuccessfully()
+    {
+        Storage::fake('public');
+
+        $avatar = UploadedFile::fake()->image('avatar.jpg');
+
+        $response = $this->actingAs($this->user)
+            ->json('patch', $this->user->path(), [
+            'username' => 'newusername',
+            'avatar' => $avatar,
+            'name' => 'new name',
+            'email' => 'newemail@example.com',
+            'password' => '123456789',
+            'password_confirmation' => '123456789',
+        ]);
+
+        Storage::disk('public')->assertExists('avatars/' . $avatar->hashName());
+        Storage::disk('public')->delete('avatars/' . $avatar->hashName());
+        $response->assertSessionHasNoErrors();
+    }
+
+    /**
+     * @dataProvider profileDataForErrors
+     * @param array $userInfo
+     * @param string $error
+     */
+    public function testUserGetErrorsWhileUpdatingProfile(array $userInfo, string $error, string $errorFieldName)
+    {
+        Storage::fake('public');
+
+        $avatar = UploadedFile::fake()->image('avatar.jpg');
+
+        $response = $this->actingAs($this->user)
+            ->patch($this->user->path(), [
+                'username' => $userInfo['username'],
+                'avatar' => $avatar,
+                'name' => $userInfo['name'],
+                'email' => $userInfo['email'],
+                'password' => $userInfo['password'],
+                'password_confirmation' => $userInfo['password_confirmation']
+            ]);
+
+        $response->assertStatus(302);
+        $response->assertSessionHasErrors($errorFieldName);
+        $response->assertSessionHasErrors([
+            $errorFieldName => $error
+        ]);
+    }
+
+    public function profileDataForErrors(): array
+    {
+        //TODO: Test for email, password and avatar
+        return [
+            [
+                'userInfo' => [
+                    'username' => '',
+                    'name' => 'new name',
+                    'email' => 'newemail@example.com',
+                    'password' => '123456789',
+                    'password_confirmation' => '123456789'
+                ],
+                'error' => 'The username field is required.',
+                'errorFieldName' => 'username'
+            ],
+            [
+                'userInfo' => [
+                    'username' => 'newusername',
+                    'name' => '',
+                    'email' => 'newemail@example.com',
+                    'password' => '123456789',
+                    'password_confirmation' => '123456789'
+                ],
+                'error' => 'The name field is required.',
+                'errorFieldName' => 'name'
+            ]
+        ];
     }
 }
