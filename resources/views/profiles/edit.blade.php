@@ -58,7 +58,6 @@
                        name="avatar"
                        id="avatar"
                        {{ testAttribute('profile-avatar') }}
-                       required
                 >
 
                 <img src="{{ $user->avatar }}"
