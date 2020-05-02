@@ -12,7 +12,6 @@ This sample Laravel application developed to give you an idea how you can improv
  - PHP
  - Apache
  - MySQL 8 (recommended) / MariaDB
- - Docker compose version 1.22 or later
  - An editor or IDE (PHPStorm is recommended)
  - MySQL client ([HeidiSQL](https://www.heidisql.com/) is free to use)
  
@@ -34,19 +33,17 @@ This sample Laravel application developed to give you an idea how you can improv
     composer install
     npm install
     ```
-    ###### Note: It will take some time, so bear with me
+    > Note: It will take some time, so bear with me
  
  4. Create databases bt running following command:
      ```bash
      make:databases
      ```
-    _This will create two databases `laravel-ci-training` and `laravel-ci-training-testing` if they doesn't exist._
+    >NOTE: This will create two databases `laravel-ci-training` and `laravel-ci-training-testing` if they doesn't exist.
+    Before running any cypress or phpunit test, we normally clean whole database.
+    That's why we are creating `laravel-ci-training-testing` database so we don't lose all your data from actual database i.e `laravel-ci-training` while development
     
-    _Before running any cypress or phpunit test, we normally clean whole database._
-    
-    _That's why we are creating `laravel-ci-training-testing` database so we don't lose all your data from actual database i.e `laravel-ci-training` while development_
-    
-    _You can find this command above command in `app/Console/Commands/DatabaseCreateCommand.php`_
+    >You can find this command above command in `app/Console/Commands/DatabaseCreateCommand.php`
     
  5. Run built in server
     ```bash
@@ -57,7 +54,7 @@ This sample Laravel application developed to give you an idea how you can improv
     ```bash
     laravel-ci-training-testing.local:8000
     ```
-    ##### used to load test environment for phpunit and cypress
+    >used to load test environment for phpunit and cypress
 
 ## Cypress
 **NOTE: To run cypress make sure you follow all steps of installation**
