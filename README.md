@@ -37,7 +37,7 @@ This sample Laravel application developed to give you an idea how you can improv
  
  4. Create databases bt running following command:
      ```bash
-     make:databases
+     php artisan make:databases
      ```
     >NOTE: This will create two databases `laravel-ci-training` and `laravel-ci-training-testing` if they doesn't exist.
     Before running any cypress or phpunit test, we normally clean whole database.
@@ -91,4 +91,11 @@ No additional configuration is required. Will be available by default on local a
 | [eslint](https://github.com/eslint/eslint) | ESLint is a tool for identifying and reporting on patterns found in ECMAScript/JavaScript code |
 | [prettier](https://github.com/prettier/prettier) | Prettier is an opinionated code formatter for javascript |
 
+#### Optional
+If you want to use docker with laravel you can get help from [this repo](https://github.com/dimadeush/docker-apache-php-laravel)
+
 #### References
+ - [Laravel 6 From Scratch - Laracast](https://laracasts.com/series/laravel-6-from-scratch)
+ - [Test driven development in laravel](https://www.youtube.com/watch?v=0Rjsuw1ScXg&list=PLpzy7FIRqpGAbkfdxo1MwOS9xjG3O3z1y&index=1)
+ - [Cypress with Laravel - Laracast](https://laracasts.com/series/whatcha-working-on/episodes/39)
+ - [Laravel model's relationship testing](https://medium.com/@tonyfrenzy/part-1-testing-model-relationships-in-laravel-schema-tests-a321f0bf4409)
