@@ -64,12 +64,26 @@ Cypress can be opened by running nay of following commands under root directory 
   1.  `./node_modules/.bin/cypress open`
   2.  `php artisan run:cypress` (created this to give an idea of laravel commands)
 
+## Debugging
+For debugging two famous packages [Telescope](https://laravel.com/docs/7.x/telescope#introduction) and [laravel-debugbar](https://github.com/barryvdh/laravel-debugbar)
+are also added.
+
+#### Telescope
+To run Telescope make sure you have `APP_ENV=local` in your .env file.
+> NOTE: You might have to stop restart your application. To do that stop existing laravel internal server and run `php artisan serve` again.
+> You can read more details [here](https://laravel.com/docs/7.x/telescope#configuration)
+
+#### Laravel Debugbar
+No additional configuration is required. Will be available by default on local and development environment 
+
 ## Packages
 #### Composer Packages
 | Name | Description |
 | ----------- | ----------- |
 | [laravel-ide-helper](https://github.com/barryvdh/laravel-ide-helper) | IDE helper for Laravel autocomplete |
 | [composer-git-hooks](https://github.com/BrainMaestro/composer-git-hooks) | Manage git hooks easily in your composer configuration |
+| [laravel/telescope](https://github.com/laravel/telescope) | Debug assistant for the Laravel framework |
+| [laravel-debugbar](https://github.com/barryvdh/laravel-debugbara) | Debugbar for the Laravel framework |
 
 #### NPM Packages
 | Name | Description |
