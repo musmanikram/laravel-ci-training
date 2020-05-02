@@ -25,6 +25,8 @@ class CreateLikesTables extends Migration
                 ->onDelete('cascade');
             $table->boolean('liked');
             $table->timestamps();
+
+            $table->unique(['user_id', 'tweet_id']);
         });
     }
 
