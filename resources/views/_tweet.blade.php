@@ -22,5 +22,10 @@
         <p class="text-sm" {{ testAttribute('tweet-body-'.$tweet->user->id) }}>
             {{ $tweet->body }}
         </p>
+
+        @auth
+            <x-like-buttons :tweet="$tweet" />
+        @endauth
+
     </div>
 </div>
